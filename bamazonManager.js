@@ -1,5 +1,6 @@
-var mysql = require("mysql");
-var inquirer = require("inquirer");
+var mysql = require("mysql");        // Allows us to grab information from a database we create in mysql 
+var inquirer = require("inquirer");  // Allows us to use prompts via the console
+var Table = require("cli-table");    // Allows us to log information in a table format
 
 // create the connection information for the sql database
 var connection = mysql.createConnection({
@@ -18,6 +19,7 @@ connection.connect(function(err) {
 });
 
 
+// Allow the manager to select from a list of options and execute the respective function based on the manager's answer
 function listMenu() {
   inquirer.prompt([
     {
@@ -54,50 +56,83 @@ function listMenu() {
    			quit();
    			break;
    	}
-
 });
 }
 
 
+// List all of the products available for sale
 function productsForSale() {
 	console.log("\nProducts for sale: "); 
-	connection.query("SELECT * FROM products", function(err, results) { 
-		for (var i = 0; i < results.length; i++) {
 
-	console.log("\nProduct ID #: " + results[i].item_id + "\nProduct Name: " + results[i].product_name + "\nDepartment: " 
-							+ results[i].department_name + "\nPrice: $" + results[i].price + "\nInventory: " + results[i].stock_quantity + " units");
-	}
-	console.log("\n-----------------------------------------");
-	listMenu();
+// Require the table and create a header
+	var Table = require('cli-table');
+	var table = new Table({ head: ["Product ID #", "Product Name", "Department Name", "Price", "Inventory"] });
+
+	// Run a query that selects all products from the products table
+	connection.query("SELECT * FROM products", function(err, results) {
+		// Loop through the results
+		for (var i = 0; i < results.length; i++) {
+			var inventory = results[i].stock_quantity + " units";
+			var price = "$" + results[i].price;
+			// Push the results into a table
+			table.push([results[i].item_id, results[i].product_name, results[i].department_name, price, inventory]);
+		}
+		// Log the table to the console and execute listMenu again
+		console.log(table.toString());
+		listMenu();
 	});
 }
 
 
+// View products with an inventory of less than 5 units
 function viewLowInventory() {
-	connection.query("SELECT * FROM products", function(err, results) { 
-		console.log("\nProducts with low inventory of less than 5 units:");
+	console.log("\nProducts with low inventory of less than 5 units:");
 
+	// Require the table and create a header
+	var Table = require('cli-table');
+	var table = new Table({ head: ["Product ID #", "Product Name", "Department Name", "Price", "Inventory"] });
+
+	// Run a query that selects all of the data in the products table
+	connection.query("SELECT * FROM products", function(err, results) { 
+		// Loop through the results
 		for (var i = 0; i < results.length; i++) {
+			// If the stock_quantity on any of the results is less than 5
 			if (results[i].stock_quantity < 5) { 
-				console.log("\nProduct ID#: " + results[i].item_id + "\nProduct Name: " + results[i].product_name + "\nCurrent Inventory: " + results[i].stock_quantity);
+					var inventory = results[i].stock_quantity + " units (LOW)";
+					var price = "$" + results[i].price;
+					// Push the relative data into the table
+					table.push([results[i].item_id, results[i].product_name, results[i].department_name, price, inventory]);
 				}
 			}
-		console.log("\n-----------------------------------------");
+		// Log the table to the console and execute listMenu again
+		console.log(table.toString());
 		listMenu();
 		});
   }
 
 
+// Allow the manager to add to inventory 
 function addToInventory() {
+
+	// First, we display the table of all products
+	// Require the table and create a header
+	console.log("\nCurrent Inventory:");
+	var Table = require('cli-table');
+	var table = new Table({ head: ["Product ID #", "Product Name", "Department Name", "Price", "Inventory"] });
+
+	// Run a query that selects all of the data in the products table
   connection.query("SELECT * FROM products", function(err, results) { 
-
+  	// Loop through the results
 		for (var i = 0; i < results.length; i++) {
-		console.log("\nProduct ID #: " + results[i].item_id + "\nProduct Name: " + results[i].product_name + "\nDepartment: " 
-								+ results[i].department_name + "\nPrice: $" + results[i].price + "\nInventory: " + results[i].stock_quantity + " units");
+			var inventory = results[i].stock_quantity + " units";
+			var price = "$" + results[i].price;
+			// Push the relative date into a table
+			table.push([results[i].item_id, results[i].product_name, results[i].department_name, price, inventory]);
 		}
-		console.log("\n-----------------------------------------");
+		// Log the table to the console 
+		console.log(table.toString());
 
-	// Prompt what product ID you'd like to add units to 
+	// Then, we prompt the manager to see what product ID they'd like to add units to 
   inquirer.prompt([
     {
      name: "productID",
@@ -123,20 +158,23 @@ function addToInventory() {
     }
    ]).then(function(selection) {
 
+   		// Run a query that targets the item_id that the manager wants to update. Retrieve data from that item.
       connection.query("SELECT * FROM products WHERE ?", { item_id: selection.productID }, function(err, results) { 	
-
+      // Store data in variables.
    		var itemName = results[0].product_name;
    		var itemID = selection.productID;
    		var currentInventory = parseInt(results[0].stock_quantity);
    		var addedInventory = parseInt(selection.units);
    		var newInventory = addedInventory + currentInventory;
 
+   		// Log messages to let the manager know the item that has been selected, the current data of that item and the updated inventory of that item
      	console.log("\nManager selected product ID#: " + itemID);
      	console.log("Product Name: " + itemName);
    		console.log("Current inventory: " + currentInventory);
    		console.log("Number of units to add: " + addedInventory);
    		console.log("New Inventory: " + newInventory);
 
+   		// Run a query to update the item with the new inventory that the manager requested to add plus the current inventory
 			connection.query("UPDATE products SET ? WHERE ?", 
 				[
 					{
@@ -159,6 +197,7 @@ function addToInventory() {
 }
 
 
+// Allow the manager to add a new product into the products table
 function addNewProduct() {
 // Name of the item, department name, price, inventory level
   inquirer.prompt([
@@ -196,11 +235,13 @@ function addNewProduct() {
     }
     ]).then(function(newProduct) {
 
+    	// Log messages to sum up what the manager would like to add
     	console.log("Manager would like to add: " + newProduct.name);
     	console.log("Department: " + newProduct.department);
     	console.log("Price: " + newProduct.price);
     	console.log("Inventory: " + newProduct.inventory);
 
+    	// Insert the manager's responses into the products table
     	connection.query(
     		"INSERT INTO products SET ?",
     		{
@@ -216,18 +257,27 @@ function addNewProduct() {
     		}
     	);
     });
-
 }
 
 
+// Allow the manager to remove a product from the products table
 function removeProduct() {
+
+	// Show all products for sale in a table
+	console.log("\nProducts For Sale:");
+	var Table = require('cli-table');
+	var table = new Table({ head: ["Product ID #", "Product Name", "Department Name", "Price", "Inventory"] });
+
 	connection.query("SELECT * FROM products", function(err, results) { 
 
 	for (var i = 0; i < results.length; i++) {
-		console.log("\nProduct ID #: " + results[i].item_id + "\nProduct Name: " + results[i].product_name + "\nDepartment: " 
-							+ results[i].department_name + "\nPrice: $" + results[i].price + "\nInventory: " + results[i].stock_quantity + " units");
+			var inventory = results[i].stock_quantity + " units";
+			var price = "$" + results[i].price;
+
+			table.push([results[i].item_id, results[i].product_name, results[i].department_name, price, inventory]);
 		}
-		console.log("\n-----------------------------------------");
+
+		console.log(table.toString());
 
   inquirer.prompt([
     {
@@ -243,6 +293,7 @@ function removeProduct() {
     }
     ]).then(function(select) { 
 
+    	// Run a query to delete the product the manager has requested
 			connection.query(
 				"DELETE FROM products WHERE ?",
 				{
