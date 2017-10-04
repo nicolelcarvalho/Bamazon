@@ -51,7 +51,7 @@ All data will be logged to your terminal/bash window.
 	![supervisordemo](assets/images/supervisordemo.gif)
 
 
-## My SQL Snapshots
+## MySQL Snapshots
 
 1. Creating the products table and inserting data
 
