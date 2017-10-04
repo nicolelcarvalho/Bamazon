@@ -88,7 +88,7 @@ function placeOrder() {
 
 
       // If the inventory is greater than the units ordered by the customer, then we have enough in stock to fulfill the customer's order
-        if(inventory > unitsOrdered) {
+        if(inventory >= unitsOrdered) {
           // Calculate the remaining stock of the item and store it in a remainingStock variable
           var remainingStock = inventory - unitsOrdered;
 
