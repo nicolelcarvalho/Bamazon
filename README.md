@@ -6,11 +6,11 @@ Created during Week 7 of Rutgers Coding Bootcamp. The challenge was to use Node 
 
 The app takes in 3 different commands: bamazonCustomer, bamazonManager and bamazonSupervisor. 
 
-	- As the customer, the user can purchase products available for sale. 
-	- As the manager, the user can edit the products available for sale and adjust inventory levels. 
-	- As the supervisor, the user can track product sales across the store's departments and view profit by department. 
+- As the customer, the user can purchase products available for sale. 
+- As the manager, the user can edit the products available for sale and adjust inventory levels. 
+- As the supervisor, the user can track product sales across the store's departments and view profit by department. 
 	
-	* All data will be logged to your terminal/bash window.
+* All data will be logged to your terminal/bash window.
 
 ### Getting Started
 
