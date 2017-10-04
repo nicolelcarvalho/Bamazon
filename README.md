@@ -51,6 +51,24 @@ All data will be logged to your terminal/bash window.
 	![supervisordemo](assets/images/supervisordemo.gif)
 
 
+## My SQL Snapshots
+
+1. Creating the products table and inserting data
+
+   ![createProductsTable](assets/images/createProductsTable.png)
+
+2. Creating the departments table and inserting data
+   
+   	![createDepartmentsTable](assets/images/createDepartmentsTable.png)
+
+3. Joining the products table & departments table by department Name and summing product sales by department. 
+
+	* Profit by department is calculated on the fly in the bamazonSupervisor.js file and is not stored in MySQL as per the instructions in the assignment.
+
+	![joinTables](assets/images/joinTables.png)
+
+
+
 ### Tech used
 - Node.js
 - MySQL
