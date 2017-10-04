@@ -9,7 +9,8 @@ The app takes in 3 different commands: bamazonCustomer, bamazonManager and bamaz
 - As the customer, the user can purchase products available for sale. 
 - As the manager, the user can edit the products available for sale and adjust inventory levels. 
 - As the supervisor, the user can track product sales across the store's departments and view profit by department. 
-- All data will be logged to your terminal/bash window.
+
+All data will be logged to your terminal/bash window.
 
 ### Getting Started
 
@@ -21,9 +22,9 @@ The app takes in 3 different commands: bamazonCustomer, bamazonManager and bamaz
 
 1. `node bamazonCustomer`
 
-  	* All products available for sale will be displayed in a table along with their Product ID# and price
-  	* As the customer, you have the ability to purchase a product by the Product ID#
-  	* The customer inputs the Product ID# and number of units they would like to buy
+  	* All products available for sale will be displayed in a table along with their product ID# and price
+  	* As the customer, you have the ability to purchase a product by the product ID#
+  	* The customer inputs the product ID# and number of units they would like to buy
   	* Then, a receipt prints to the console that totals the customer's purchase
 
 	![customerdemo](assets/images/customerdemo.gif)
@@ -44,8 +45,8 @@ The app takes in 3 different commands: bamazonCustomer, bamazonManager and bamaz
 
 	* You will be prompted with the following options:
 		* View Product Sales by Department - *Displays overhead costs, product sales and total profit by department* 
-		* Create New Department - *Allows you to create a new department in which the manager can then add products to*
-		* Quit - *Exit the program* 
+		* Create New Department 
+		* Quit 
 
 	![supervisordemo](assets/images/supervisordemo.gif)
 
