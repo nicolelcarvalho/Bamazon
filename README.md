@@ -5,6 +5,7 @@
 Created during Week 7 of Rutgers Coding Bootcamp. The challenge was to use Node JS and MySQL to create an Amazon-like storefront. 
 
 The app takes in 3 different commands: bamazonCustomer, bamazonManager and bamazonSupervisor. 
+
 	* As the customer, the user can purchase products available for sale. 
 	* As the manager, the user can edit the products available for sale and adjust inventory levels. 
 	* As the supervisor, the user can track product sales across the store's departments and view profit by department. 
