@@ -1,14 +1,22 @@
 # Bamazon
 
-Created during Week 7 of Rutgers Coding Bootcamp. The challenge was to use Node JS and MySQL to create an Amazon-like storefront. The app takes in 3 different commands: bamazonCustomer, bamazonManager and bamazonSupervisor. As the customer, the user can purchase products available for sale. As the manager, the user can edit the products available for sale and adjust inventory levels. As the supervisor, the user can track product sales across the store's departments and view profit by department. All data will be logged to your terminal/bash window.
+### Overview
 
-## Getting Started
+Created during Week 7 of Rutgers Coding Bootcamp. The challenge was to use Node JS and MySQL to create an Amazon-like storefront. 
+
+The app takes in 3 different commands: bamazonCustomer, bamazonManager and bamazonSupervisor. 
+	* As the customer, the user can purchase products available for sale. 
+	* As the manager, the user can edit the products available for sale and adjust inventory levels. 
+	* As the supervisor, the user can track product sales across the store's departments and view profit by department. 
+	* *All data will be logged to your terminal/bash window.*
+
+### Getting Started
 
 - Clone down repo.
 - Run command 'npm install' in Terminal or GitBash
 - Run one of the commands listed below.
 
-## What Each Command Does / Demonstration of Each Command
+### What Each Command Does / Demonstration of Each Command
 
 1. `node bamazonCustomer`
 
@@ -41,23 +49,23 @@ Created during Week 7 of Rutgers Coding Bootcamp. The challenge was to use Node 
 	![supervisordemo](assets/images/supervisordemo.gif)
 
 
-## Tech used
+### Tech used
 - Node.js
 - MySQL
 - Inquirer NPM Package - https://www.npmjs.com/package/inquirer
 - CLI-Table NPM Package - https://www.npmjs.com/package/cli-table
 
 
-## Prerequisites
+### Prerequisites
 ```
 - Node.js - Download the latest version of Node https://nodejs.org/en/
 ```
 
-## Built With
+### Built With
 
 * Sublime Text - Text Editor
 
-## Authors
+### Authors
 
 * **Nicole Carvalho** - *Node JS MySQL* - [Nicole Carvalho](https://github.com/nicolelcarvalho)
 
