@@ -4,13 +4,15 @@
 
 Created during Week 7 of Rutgers Coding Bootcamp. The challenge was to use Node JS and MySQL to create an Amazon-like storefront. 
 
+Node JS was used to create the backend of this application which is accessed through the terminal. All data will be logged to your terminal/bash window.
+
+MySQL was used to create a database to store product information such as product name, price, inventory, etc. As the application is used and products are being purchased or inventory levels are being adjusted, the data is updated in the MySQL database. 
+
 The app takes in 3 different commands: bamazonCustomer, bamazonManager and bamazonSupervisor. 
 
 - As the customer, the user can purchase products available for sale. 
 - As the manager, the user can edit the products available for sale and adjust inventory levels. 
 - As the supervisor, the user can track product sales across the store's departments and view profit by department. 
-
-All data will be logged to your terminal/bash window.
 
 ### Getting Started
 
