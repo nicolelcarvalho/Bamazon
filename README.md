@@ -9,8 +9,7 @@ The app takes in 3 different commands: bamazonCustomer, bamazonManager and bamaz
 - As the customer, the user can purchase products available for sale. 
 - As the manager, the user can edit the products available for sale and adjust inventory levels. 
 - As the supervisor, the user can track product sales across the store's departments and view profit by department. 
-	
-* All data will be logged to your terminal/bash window.
+- All data will be logged to your terminal/bash window.
 
 ### Getting Started
 
@@ -32,12 +31,12 @@ The app takes in 3 different commands: bamazonCustomer, bamazonManager and bamaz
 2. `node bamazonManager`
 
   	* You will be prompted with the following options:
-  		* View Products for Sale - *Displays all products available for sale in a table*
+  		* View Products for Sale 
   		* View Low Inventory - *Displays all products that have an inventory of less than 5 units*
-  		* Add to Inventory - *Allows you to add inventory to any product available for sale*
-  		* Add New Product - *Allows you to add a new product*
-  		* Remove a Product - *Allows you to remove a product*
-  		* Quit - *Exit the program*
+  		* Add to Inventory 
+  		* Add New Product 
+  		* Remove a Product 
+  		* Quit 
 
 	![managerdemo](assets/images/managerdemo.gif)
 
@@ -69,6 +68,6 @@ The app takes in 3 different commands: bamazonCustomer, bamazonManager and bamaz
 
 ### Authors
 
-* **Nicole Carvalho** - *Node JS MySQL* - [Nicole Carvalho](https://github.com/nicolelcarvalho)
+* **Nicole Carvalho** - *Node JS, MySQL* - [Nicole Carvalho](https://github.com/nicolelcarvalho)
 
 
