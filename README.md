@@ -55,7 +55,9 @@ The app takes in 3 different commands: bamazonCustomer, bamazonManager and bamaz
 
 ## MySQL Snapshots
 
-1. Creating the products table and inserting data
+1. Creating the products table and inserting data. 
+	
+	* A Product sales column is created in MySQL but it is calculated within the bamazonCustomer.js file and adds to the appropriate item's product sales column after every purchase.
 
    ![createProductsTable](assets/images/createProductsTable.png)
 
